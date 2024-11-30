@@ -3,7 +3,7 @@ const app = useApp();
 </script>
 
 <template>
-  <div>
+  <div class="text-base">
     <p>{{ app.name }} - v{{ app.version }}</p>
     <p>{{ app.description }}</p>
   </div>
