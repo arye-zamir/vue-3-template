@@ -2,7 +2,7 @@ export const useAppStore = defineStore('app-store', () => {
   // region version
   const __version__ = ref('');
 
-  const setVersion = (version: string) => {
+  const setAppVersion = (version: string) => {
     __version__.value = version;
     return __version__.value;
   };
@@ -33,7 +33,7 @@ export const useAppStore = defineStore('app-store', () => {
 
   return {
     version,
-    setVersion,
+    setAppVersion,
     name,
     setAppName,
     description,
