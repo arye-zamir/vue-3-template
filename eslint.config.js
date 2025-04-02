@@ -1,0 +1,33 @@
+import eslint from "@eslint/js";
+import globals from "globals";
+import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginVue from "eslint-plugin-vue";
+import typescriptEslint from "typescript-eslint";
+
+export default typescriptEslint.config(
+  { ignores: ["*.d.ts", "**/coverage", "**/dist"] },
+  {
+    extends: [
+      eslint.configs.recommended,
+      ...typescriptEslint.configs.recommended,
+      ...eslintPluginVue.configs["flat/recommended"],
+    ],
+    files: ["**/*.{ts,vue}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: globals.browser,
+      parserOptions: {
+        parser: typescriptEslint.parser,
+      },
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      "vue/multi-word-component-names": "off",
+    },
+  },
+  eslintConfigPrettier,
+);
